@@ -20,6 +20,7 @@ sequelize - for this we also need a driver , to tell it to which relational db i
             ex : mariadb , sqlite3
             After installing drivers also , we have to do lot of coding on order to setup the ORM
             in order to avoid thet we can use a library sequelize pacakage sequelize-cli
+            https://github.com/sequelize/cli (check the commands in usage seciton)
 
 Our implementation is inside src folder 
 so there is a command sequelize init , which does some init stuff
@@ -38,3 +39,8 @@ config.json - gives us 3 databases env :  developement , test , production env
 
             and since this file has sensitive info , we will hide it , by putting it in gitignore 
 
+seeders - seeders is used to inject the starting data in the db 
+
+migrations - to do version control of our database
+            for us these will be js files , in which we will write how to maintain the version in DBs
+            sequelize migration:generate or  sequelize migration:create
