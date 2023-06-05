@@ -111,6 +111,17 @@ Why do we need validation check in backend , it can be in Frontend also
 Moreover we can also create a common JSON for all the error messages , like we are doing for HTTP codes
 this will be help in multiple-languaze projects 
 will reduce redundancy (Something went wrong at multiple places)
- 
 
-    
+
+We have `npx sequelize seed:generate --name add-airplanes` 
+New seed was created at /Users/prateekramani/javascript/17/NodeJS-Base-Template/src/seeders/20230605153430-add-airplanes.js .
+
+ `npx sequelize db:seed:all`         Run Async up function
+
+ And all of the data will be inserted 
+
+ We can also seed only a particular file 
+
+
+ `npx sequelize db:seed:undo:all` - Run Async down function
+ 
