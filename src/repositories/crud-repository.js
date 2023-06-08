@@ -11,61 +11,38 @@ class CrudRepository {
     }
 
     async create(data) {
-            const response = await this.model.create(data);
-            return response;
+        const response = await this.model.create(data);
+        return response;
     }
 
 
     async destroy(data) {
-        try {
-            const response =await this.model.destroy({
+        const response = await this.model.destroy({
             where: {
-                id : data     
+                id: data
             }
         });
-            return response;
-        }
-        catch {
-            Logger.error("Something went wrong in the Crud Repo : destroy");
-            throw error;
-        }
+        return response;
     }
 
     async get(data) {
-        try {
-            const response =await this.model.findByPK(data)
-            return response;
-        }
-        catch {
-            Logger.error("Something went wrong in the Crud Repo : get");
-            throw error;
-        }
+        const response = await this.model.findByPK(data)
+        return response;
     }
 
     async getAll(data) {
-        try {
-            const response =await this.model.findAll(data)
-            return response;
-        }
-        catch {
-            Logger.error("Something went wrong in the Crud Repo : get");
-            throw error;
-        }
+        const response = await this.model.findAll(data)
+        return response;
+
     }
 
-    async update(id , data) { // data - > {col_name : value}
-        try {
-            const response =await this.model.update(data , {
-                where : {
-                    id : id
-                }
-            })
-            return response;
-        }
-        catch {
-            Logger.error("Something went wrong in the Crud Repo : get");
-            throw error;
-        }
+    async update(id, data) { // data - > {col_name : value}
+        const response = await this.model.update(data, {
+            where: {
+                id: id
+            }
+        })
+        return response;
     }
 }
 

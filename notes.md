@@ -116,9 +116,9 @@ will reduce redundancy (Something went wrong at multiple places)
 We have `npx sequelize seed:generate --name add-airplanes` 
 New seed was created at /Users/prateekramani/javascript/17/NodeJS-Base-Template/src/seeders/20230605153430-add-airplanes.js .
 
- `npx sequelize db:seed:all`         Run Async up function
+ `npx sequelize db:seed:all` -  Run Async up function
 
- And all of the data will be inserted 
+ And all of the data will be inserted .
 
  We can also seed only a particular file 
 
