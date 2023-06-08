@@ -28,6 +28,23 @@ async function createAirplane(req, res) {
 
 }
 
+
+async function getAirplanes(req, res) {
+    try {
+        console.log("Inside controller");
+        const airplanes = await AirplaneService.getAirplanes();
+        console.log(airplanes);
+        successResponse.data = airplanes;
+        return res.status(StatusCodes.OK).json(successResponse);
+
+    } catch (error) {
+        errorResponse.error = error;
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errorResponse);
+    }
+
+}
+
 module.exports = {
-    createAirplane
+    createAirplane,
+    getAirplanes
 }
