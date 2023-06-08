@@ -2,7 +2,9 @@
 // https://sequelize.org/docs/v6/core-concepts/model-querying-basics/
 
 
-const { Logger } = require("../config")
+const { StatusCodes } = require("http-status-codes");
+const { Logger } = require("../config");
+const AppError = require("../utils/errors/app-error");
 
 class CrudRepository {
 
@@ -26,12 +28,14 @@ class CrudRepository {
     }
 
     async get(data) {
-        const response = await this.model.findByPK(data)
+        const response = await this.model.findByPk(data)
+        if (!response)
+            {throw new AppError("Not able to find the response ffor given ID", StatusCodes.NOT_FOUND);}
         return response;
     }
 
-    async getAll(data) {
-        const response = await this.model.findAll(data)
+    async getAll() {
+        const response = await this.model.findAll()
         return response;
 
     }
