@@ -15,14 +15,12 @@ async function createAirplane(data){
         return airplane;
     }
     catch(error){
-        console.log(error);
         if (error.name == "SequelizeValidationError")
         {
             let explanation  = [];
             error.errors.forEach((err) => {
                 explanation.push(err.message);
             });
-            console.log("explantion" , explanation);
             throw new AppError(explanation , StatusCodes.BAD_REQUEST);
         }
         
@@ -50,11 +48,27 @@ async function getAirplane(id){
         {
             throw new AppError("Cannot find Airplane with given ID" , StatusCodes.NOT_FOUND);
         }
+        throw new AppError("Cannot find Airplane" , StatusCodes.INTERNAL_SERVER_ERROR)
+    }
+}
+
+
+async function destroyAirplane(id){
+    try {
+        const airplane = await airplanerepository.destroy(id)
+        return airplane;
+    } catch (error) {
+        if (error.statusCode == StatusCodes.NOT_FOUND)
+        {
+            throw new AppError("Cannot Delete Airplane with given ID" , StatusCodes.NOT_FOUND);
+        }
+        throw new AppError("Cannot Delete Airplane" , StatusCodes.INTERNAL_SERVER_ERROR);
     }
 }
 
 module.exports = {
     createAirplane,
     getAirplanes,
-    getAirplane
+    getAirplane,
+    destroyAirplane
 }

@@ -24,13 +24,16 @@ class CrudRepository {
                 id: data
             }
         });
+        if (!response)
+            throw new AppError("Not able to delete resource for given ID",StatusCodes.NOT_FOUND)
+
         return response;
     }
 
     async get(data) {
         const response = await this.model.findByPk(data)
         if (!response)
-            {throw new AppError("Not able to find the response ffor given ID", StatusCodes.NOT_FOUND);}
+            {throw new AppError("Not able to find the response for given ID", StatusCodes.NOT_FOUND);}
         return response;
     }
 
