@@ -8,6 +8,8 @@ const {InfoController} = require("../../controllers");
 
 const airplaneRoutes = require("./airplane-routes")
 
+const cityRoutes = require("./city-routes")
+
 
 
 router.get("/info", InfoController.info)
@@ -15,5 +17,8 @@ router.get("/info", InfoController.info)
 // call the controller from here
 
 router.use("/airplanes" , airplaneRoutes)
+
+
+router.use("/city" ,cityRoutes)
 
 module.exports = router;

@@ -4,7 +4,6 @@
 const express = require("express");
 const { AirplaneController } = require("../../controllers")
 const { AirplaneMiddlewares } = require("../../middlewares");
-const { AirplaneService } = require("../../services");
 const router = express.Router();
 
 
