@@ -150,6 +150,5 @@ OnDelete : CASCADE
 so that on deleting the city , we will be deleting the Airport automatically
 
 
-npx sequelize model:generate --name Flight --attributes flightNumber:integer,airplaneId:integer,arrivalAirportId:integer,departureAirportId:integer,arrivalTime:date,departureTime:date,price:integer,boardingGate:integer,totalSeats:integer
 
-npx sequelize db:migrate
+
