@@ -125,3 +125,31 @@ New seed was created at /Users/prateekramani/javascript/17/NodeJS-Base-Template/
 
  `npx sequelize db:seed:undo:all` - Run Async down function
  
+ `npx sequelize migration:generate --name update-city-airport-association`
+    is for Generates a new migration file , which can be used to update , alter , some table 
+
+
+    TO check all the Foreign keys in a table : 
+    https://www.skytowner.com/explore/searching_all_foreign_keys_to_a_table_or_column_in_mysql
+
+
+We can also set onDelete and onUpdate to Cascade or null ,
+so that , when city deleted , cityId in Airports can also be deleted , or set to null
+
+TO check all the constraints
+SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_NAME = 'Airports' AND CONSTRAINT_SCHEMA = 'flights';
+
+
+the way we have has many in city model for airport , so we get access to CRUD methods for Airport using the city model as well , see associations.png file 
+So in one to many association sequelize allows.. Using City Model , we can access `createAirport` , `getAirports`, etc (camel case is must) , even without creating these function
+Delete is not allowed , as it inserts cityId as null value in Airports , which breaks the allowNull : false constraints 
+
+
+Had we placed OnDELETE : CASCADE , it wont work , we have to put 
+OnDelete : CASCADE
+so that on deleting the city , we will be deleting the Airport automatically
+
+
+npx sequelize model:generate --name Flight --attributes flightNumber:integer,airplaneId:integer,arrivalAirportId:integer,departureAirportId:integer,arrivalTime:date,departureTime:date,price:integer,boardingGate:integer,totalSeats:integer
+
+npx sequelize db:migrate
