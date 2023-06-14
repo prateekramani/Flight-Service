@@ -7,22 +7,28 @@ const AppError = require("../utils/errors/app-error");
 
 
 function validateRequest(req, res, next) {
+
+    if (req.body.name && req.body.code && req.body.cityId)
+    {
+        next();
+    }
+
+    errorResponse.msg = "Something went wrong while creating airport";
+    var responseError = []
+
     if (!req.body.name) {
-        errorResponse.msg = "Something went wrong while creating airport";
-        errorResponse.error = new AppError(["Name not found."] , StatusCodes.BAD_REQUEST)
-        return res.status(StatusCodes.BAD_REQUEST).json(errorResponse);
+        responseError.push("Name not found.");
     }
     if (!req.body.code) {
-        errorResponse.msg = "Something went wrong while creating airport";
-        errorResponse.error = new AppError(["Code not found."] , StatusCodes.BAD_REQUEST)
-        return res.status(StatusCodes.BAD_REQUEST).json(errorResponse);
+        responseError.push("Code not found.");
     }
     if (!req.body.cityId) {
-        errorResponse.msg = "Something went wrong while creating airport";
-        errorResponse.error = new AppError(["City ID not found."] , StatusCodes.BAD_REQUEST)
-        return res.status(StatusCodes.BAD_REQUEST).json(errorResponse);
+        responseError.push("City ID not found.");
     }
-    next();
+
+    errorResponse.error = new AppError(responseError , StatusCodes.BAD_REQUEST)
+    return res.status(StatusCodes.BAD_REQUEST).json(errorResponse);
+
 }
 
 module.exports = {
