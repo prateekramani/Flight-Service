@@ -5,6 +5,9 @@ const { StatusCodes } = require("http-status-codes")
 const {errorResponse , successResponse} = require("../utils/common")
 
 
+
+// POST : / city
+// req body : {name  : "Kanpur" }
 async function createCity(req, res) {
     try {
         

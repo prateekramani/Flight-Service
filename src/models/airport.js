@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
 
       this.belongsTo(models.City, {
-        foreignKey : cityId,
+        foreignKey : "cityId",
       }) // Airport belongs to City , on the basis of cityId (one airport belongs to one city)
 
       this.hasMany(models.Flight, {

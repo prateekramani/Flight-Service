@@ -28,6 +28,9 @@ async function createAirplane(req, res) {
 }
 
 
+// GET : / airplanes
+// req body : {}
+
 async function getAirplanes(req, res) {
     try {
         const airplanes = await AirplaneService.getAirplanes();
@@ -42,6 +45,9 @@ async function getAirplanes(req, res) {
 }
 
 
+// GET : /airplane/:id
+// req body : {}
+
 async function getAirplane(req, res) {
     try {
         const airplane = await AirplaneService.getAirplane(req.params.id);
@@ -55,6 +61,9 @@ async function getAirplane(req, res) {
 
 }
 
+
+// DELETE : /airplane/:id
+// req body : {}
 
 async function destroyAirplane(req, res) {
     try {
