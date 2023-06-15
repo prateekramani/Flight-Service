@@ -12,8 +12,8 @@ function validateRequest(req, res, next) {
     {
         next();
     }
-
-    errorResponse.msg = "Something went wrong while creating airport";
+    else {
+        errorResponse.msg = "Something went wrong while creating airport";
     var responseError = []
 
     if (!req.body.name) {
@@ -28,7 +28,7 @@ function validateRequest(req, res, next) {
 
     errorResponse.error = new AppError(responseError , StatusCodes.BAD_REQUEST)
     return res.status(StatusCodes.BAD_REQUEST).json(errorResponse);
-
+    }
 }
 
 module.exports = {
