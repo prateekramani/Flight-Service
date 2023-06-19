@@ -160,3 +160,8 @@ but in migration of creating Flight we write that it refers to Aiport with key "
 alias being set in Model-Flight , to name all the assiciations
 and also to be mentioned while quering ,  as with the help of Alias , Sequelize recognizes which association we are referring to 
 with ON , we tell us by which column we want to apply the JOIN , else it does over the primary key - custom Column 
+
+Inside Aiport Model Include , we can also write include of City , so as to create a join of 
+Airport and City as well and get City Details 
+
+Using ORM can also be harmful , since they can make queries complex 

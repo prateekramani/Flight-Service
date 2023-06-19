@@ -1,7 +1,7 @@
 
 
 const CrudRepository = require("./crud-repository")
-const { Flight , Airplane, Airport } = require("../models")
+const { Flight , Airplane, Airport, City } = require("../models")
 const { Sequelize } = require("sequelize")
 
 
@@ -23,18 +23,24 @@ class FlightRepository extends CrudRepository {
                 on : {
                     col1 : Sequelize.where(Sequelize.col("Flight.arrivalAirportId"), "=" ,Sequelize.col("arrivalAirport.code"))
                 },
-                as: "arrivalAirport" // doing a join over arrivalAirport (Airport) .code
+                as: "arrivalAirport", // doing a join over arrivalAirport (Airport) .code
+                include : {
+                    model : City,
+                }
             },
             {
                 model : Airport,
                 on : {
                     col1 : Sequelize.where(Sequelize.col("Flight.departureAirportId"), "=" ,Sequelize.col("departureAirport.code")),
                 },
-                as: "departureAirport"
+                as: "departureAirport",
+                include : {
+                    model : City,
+                }
                 }
             ]
             //alias being set in Model-Flight
-            // with the help of Alias , Sequqlize recognizes which association we are referring to 
+            // with the help of Alias , Sequqlize   recognizes which association we are referring to 
         })
         return response;
     }
