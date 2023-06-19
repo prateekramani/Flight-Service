@@ -150,5 +150,13 @@ OnDelete : CASCADE
 so that on deleting the city , we will be deleting the Airport automatically
 
 
+In the model as well Flight Model as well as Airport Model
+we write the association by writing the key present in Flight only . since Flight is having one to many 
+in Flight we write , this.belongs to (Model. Airport) with key as arrivalairportId (which is a part of Flight)
+and in Airport Model also we write this.model has many (Model.Flight) with key as arrivalairportId (which is a part of Flight)
 
+but in migration of creating Flight we write that it refers to Aiport with key "code" (which is a part of Aiport)
 
+alias being set in Model-Flight , to name all the assiciations
+and also to be mentioned while quering ,  as with the help of Alias , Sequelize recognizes which association we are referring to 
+with ON , we tell us by which column we want to apply the JOIN , else it does over the primary key - custom Column 
