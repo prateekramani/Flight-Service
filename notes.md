@@ -165,3 +165,8 @@ Inside Aiport Model Include , we can also write include of City , so as to creat
 Airport and City as well and get City Details 
 
 Using ORM can also be harmful , since they can make queries complex 
+
+
+Example of Unstructuring at 2 levels in Model Seats.js
+const {Enums} = require("../utils/common")
+const {BUSINESS , ECONOMY , FIRST_CLASS , PREMIUM_ECONOMY } = Enums.SEAT_TYPE;
