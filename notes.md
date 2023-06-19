@@ -170,3 +170,9 @@ Using ORM can also be harmful , since they can make queries complex
 Example of Unstructuring at 2 levels in Model Seats.js
 const {Enums} = require("../utils/common")
 const {BUSINESS , ECONOMY , FIRST_CLASS , PREMIUM_ECONOMY } = Enums.SEAT_TYPE;
+
+
+
+  sequelize db:seed:all - runs all the seeders 
+  in order to run one seeder we have to specify the name 
+  
