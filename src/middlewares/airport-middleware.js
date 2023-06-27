@@ -2,7 +2,7 @@
 
 
 const { StatusCodes } = require("http-status-codes");
-const {errorResponse , successResponse} = require("./../utils/common");
+const {errorResponse , successResponse} = require("../utils/common");
 const AppError = require("../utils/errors/app-error");
 
 
