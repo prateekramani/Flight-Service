@@ -52,6 +52,29 @@ function validateRequest(req, res, next) {
     
 }
 
+
+function validateUpdateSeatsRequest (req , res , next) {
+
+
+    if (req.body.seats )
+    {
+        next();
+    }
+    else{
+    var responseError = [];
+
+    if (!req.body.seats) {
+        responseError.push("Seats not found.");
+    }
+
+    errorResponse.error = new AppError(responseError , StatusCodes.BAD_REQUEST)
+    return res.status(StatusCodes.BAD_REQUEST).json(errorResponse);
+
+}
+
+}
+
 module.exports = {
-    validateRequest
+    validateRequest,
+    validateUpdateSeatsRequest
 }
