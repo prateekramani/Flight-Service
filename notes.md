@@ -174,5 +174,4 @@ const {BUSINESS , ECONOMY , FIRST_CLASS , PREMIUM_ECONOMY } = Enums.SEAT_TYPE;
 
 
   sequelize db:seed:all - runs all the seeders 
-  in order to run one seeder we have to specify the name 
-  
+  in order to run one seeder we have to specify the name     

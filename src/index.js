@@ -6,16 +6,18 @@ const {ServerConfig , Logger} = require("./config");
 const apiRoutes = require("./routes")
 
 
+
 const app = express();
 
 app.use(express.json()) //this is going to add a middleware for all the upcoming routes 
 app.use(express.urlencoded({extended : true })) // to read url endoded stuff in req bodu
 
 app.use('/api' , apiRoutes);
+app.use('/bookingService/api' , apiRoutes);
 
 
 app.listen( ServerConfig.PORT , ()=>{
-    Logger.info("Successfully started the server on PORT", {});
+    Logger.info("Successfully started the Flight server on PORT", {});
     // info is the level , Success....is the message 
-    console.log( `Successfully started the server on PORT : ${ServerConfig.PORT}`)
+    console.log( `Successfully started the Flight server on PORT : ${ServerConfig.PORT}`)
 })
